@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Department index{% endblock %}
+{% block title %}Liste des departements{% endblock %}
 
 {% block body %}
-    <h1>Department index</h1>
+    <h1>Liste des departements</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Capacity</th>
+                <th>Nom</th>
+                <th>Capacite</th>
+                <th>Nombre d'etudiants</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,18 +21,19 @@
                 <td>{{ department.id }}</td>
                 <td>{{ department.Name }}</td>
                 <td>{{ department.Capacity }}</td>
+                <td>{{ department.students.count }}</td>
                 <td>
-                    <a href="{{ path('department_show', {'id': department.id}) }}">show</a>
-                    <a href="{{ path('department_edit', {'id': department.id}) }}">edit</a>
+                    <a href="{{ path('department_show', {'id': department.id}) }}"><i class="bi bi-eye"></i></a>
+                    <a href="{{ path('department_edit', {'id': department.id}) }}"><i class="bi bi-pencil"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="5">Pas de donnees</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('department_new') }}">Create new</a>
+    <a href="{{ path('department_new') }}"><i class="bi bi-plus-circle"></i></a>
 {% endblock %}
