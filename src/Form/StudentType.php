@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Department;
 use App\Entity\Student;
+use Doctrine\DBAL\Types\ArrayType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,6 +25,10 @@ class StudentType extends AbstractType
             ])
             ->add('NumEtud', NumberType::class, [
                 'label' => 'Numero etudiant'
+            ])
+            ->add('department', EntityType::class, [
+                'class' => Department::class,
+                'choice_label' => 'name',
             ])
         ;
     }

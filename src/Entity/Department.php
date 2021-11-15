@@ -33,7 +33,7 @@ class Department
     /**
      * @ORM\OneToMany(targetEntity=Student::class, mappedBy="department")
      */
-    private ArrayCollection $students;
+    private $students;
 
     public function __construct()
     {
