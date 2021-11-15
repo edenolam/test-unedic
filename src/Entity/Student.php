@@ -41,12 +41,6 @@ class Student
 
     /**
      * @ORM\Column(type="string", length=10)
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 10,
-     *      minMessage = "le numero etudiant doit contenir {{ limit }} chiffre",
-     *      maxMessage = "le numero etudiant doit contenir {{ limit }} chiffre",
-     * )
      */
     #[Groups(['student:list', 'student:item'])]
     private ?int $NumEtud;
