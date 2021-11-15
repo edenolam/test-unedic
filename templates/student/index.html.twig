@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des etudiants{% endblock %}
+
+{% block body %}
+    <h1>Liste des etudiants</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Numero etudiant</th>
+{#                <th>Departement</th>#}
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.FirstName }}</td>
+                <td>{{ student.LastName }}</td>
+                <td>{{ student.NumEtud }}</td>
+{#                <td>{{ student.department.id }}</td>#}
+                <td>
+                    <a href="{{ path('student_show', {'id': student.id}) }}"><i class="bi bi-eye"></i></a>
+                    <a href="{{ path('student_edit', {'id': student.id}) }}"><i class="bi bi-pencil"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas de donnees</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('student_new') }}"><i class="bi bi-plus-circle"></i></a>
+{% endblock %}
